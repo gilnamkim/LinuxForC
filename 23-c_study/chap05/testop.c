@@ -14,6 +14,14 @@ int main() {
 	(c) ? printf("참\n") : printf("거짓\n");
 
 	printf("결과: %d\n", c);
+	
+
+	// 형변환 연산자
+	
+	double d = 3.4;
+	int i = 2;
+
+	printf("%d\n",((int)d+i));
 
 	return 1;
 
