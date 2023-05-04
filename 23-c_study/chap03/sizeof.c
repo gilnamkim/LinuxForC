@@ -12,6 +12,6 @@ int main() {
 	// const int a = 3;  a=3; << 못바꿈
 	//
 	// #define a 3;  전처리기가 3으로 바꾸고 컴파일
-	
 
+	//입력이 됩니다
 	return 0;}
