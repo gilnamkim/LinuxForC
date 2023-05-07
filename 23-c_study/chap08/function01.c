@@ -10,7 +10,7 @@ int function2(int a, int b, int c) {
 
 int main() {
 	
-	printf("%d\n",function1(1,2));
+	printf("%d\n",function1(1,2));  
 
 	printf("%d\n",function2(10,4,1));
 
