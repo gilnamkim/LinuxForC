@@ -12,12 +12,20 @@
 
 
 //};
+//
+//
+//구조체 안에 구조체 넣기도 가능합니다
+typedef struct human {
+	int age;
+	char gender;
+}human;
 
 // 이렇게 축약할 수 있습니다.
 
 typedef struct student{
 	int s_id;
 	char name[20];
+	human man;
 }std;
 
 void std_func(std *st);
