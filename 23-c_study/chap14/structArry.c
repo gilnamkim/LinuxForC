@@ -13,6 +13,11 @@ typedef struct human{
 
 }human;
 
+// malloc 맛보기
+//
+human * head;
+head = (human *)malloc(sizeof(human));
+
 int g_h_total = 0;
 
 
