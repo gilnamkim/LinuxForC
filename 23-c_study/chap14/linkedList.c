@@ -26,17 +26,20 @@ void print_all(int *h_num) {
 // 배열을 늘릴 수가 없다!
 int main() {
 	
-
+//	stack공간에 배열설정
 //	int h_num[MAX] = {0,};
 //
 //
 	int * h_num;
 	
-	h_num = malloc(sizeof(int));
+// malloc은 다양한 형태의 포인터를 지원히기 위해 void *를 사용
+// 	heap공간에 배열설정
+	h_num = (int *)malloc(sizeof(int)*MAX);
 
 	* h_num = 4;
+	
 
-
+	printf("%d\n",*h_num);
 //	for(int i = 0; i < MAX; i++) {	
 //		add_h(h_num);
 //	}
