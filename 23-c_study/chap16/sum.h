@@ -1,3 +1,6 @@
+#ifndef _SUM_H_
+#define _SUM_H_
+
 #define MAX 10
 
 typedef struct testtype {
@@ -7,3 +10,5 @@ typedef struct testtype {
 
 int sum(int a, int b);
 
+
+#endif
