@@ -14,11 +14,43 @@ int StoHEX(char fi, char sc);
 
 char message[BUFFSIZE];
 
+void * rcv(void * arg) {
+
+	int sock = (int)arg;
+	char buff[500];
+	int len;
+	while(1) {
+		len = read(sock, buff, sizeof(buff));
+
+		if(len == -1) {
+			printf("sock close\n");
+			break;
+		}
+		printf("%s",buff);
+	}
+	pthread_exit(0);
+	return NULL;
+
+}
+
+
 
 int main(int argc, char **argv) {
 	
 	int sock;
 	struct sockaddr_in serv_addr;
+	pthread_t rcv_thread;
+	void* thread_result;
+
+	char id[100];
+
+	if(argc < 2) {
+		printf("you have to enter ID\n");
+		return 0;
+
+	}
+	strcpy(id,argv[1]);
+	printf("id : %s\n", id);
 
 
 	sock = socket(PF_INET, SOCK_STREAM, 0);
@@ -38,21 +70,23 @@ int main(int argc, char **argv) {
 	} else {
 		printf("connect success");
 	}
+	
+	pthread_create(&rcv_thread, NULL, rcv, (void *)sock);
 
-	unsigned char msg[100] = {0x01,1,2,2,34,5,1,5,123,5,2,3,45,1,0x0c};
+	char chat[100];
+	char msg[1000];
+	
+	
 
-
-	while(1) {
-		
-		printf("send : \n");
-
-		write(sock,msg,15);
+	while(1) {		
+		gets(chat);
+		sprintf(msg,"[%s] : %s\n", id, chat);
+		printf("send : %s\n",msg);
+		write(sock,msg,strlen(msg)+1);
 		sleep(1);
 		
 	}
+	printf("while end\n");
 	close(sock);
-
-
-
 	return 0;
 }
